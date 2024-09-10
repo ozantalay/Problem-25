@@ -9,10 +9,13 @@ export default function LandingPage() {
   function goToPricing() {
     pricingRef.current.scrollIntoView({ behavior: 'smooth' })
   }
+  function goToTop(){
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <>
-      <div className='relative pt-14'>
+      <div className='relative pt-14' ref={pricingRef}>
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
           aria-hidden='true'
@@ -108,12 +111,21 @@ export default function LandingPage() {
                   ))}
                 </ul>
               </div>
+
+              
               <a
                 href='#'
                 className='mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 bg-indigo-600 text-white shadow-sm hover:bg-indigo-500'
-              >
+                ref={pricingRef}
+                onClick={(e)=>{
+                  e.preventDefault();
+                  goToTop()
+                }}
+                
+                >
                 Satın alma planı
               </a>
+               
             </div>
           </div>
         </div>
